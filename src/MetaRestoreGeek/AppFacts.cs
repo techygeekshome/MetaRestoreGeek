@@ -19,7 +19,7 @@ internal static class AppFacts
             "MetaRestoreGeek matches each photo to its sidecar, including the tricky cases Google's " +
             "own naming creates (edited copies, numbered duplicates, truncated filenames), and " +
             "writes the real date and GPS back in, always to a new copy next to the original. " +
-            "Runs on your own machine, on exiftool, fetched with one click the first time it is needed.
+            "Runs on your own machine, on exiftool, fetched with one click the first time it is needed.",
         GitHubOwner = "techygeekshome",
         GitHubRepo = "MetaRestoreGeek",
         ProductUrl = "https://techygeekshome.info/metarestoregeek/",

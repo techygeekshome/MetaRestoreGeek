@@ -1,96 +1,104 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:MetaRestoreGeek.ViewModels"
-        x:Class="MetaRestoreGeek.Views.MainWindow"
-        x:DataType="vm:MainViewModel"
-        Title="MetaRestoreGeek"
-        Width="720" Height="720" MinWidth="560" MinHeight="580"
-        WindowStartupLocation="CenterScreen"
-        Background="{StaticResource Navy}"
-        FontFamily="{StaticResource UiFont}"
-        FontSize="13.5"
-        DragDrop.AllowDrop="True">
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:vm="clr-namespace:MetaRestoreGeek.ViewModels"
+x:Class="MetaRestoreGeek.Views.MainWindow"
+x:DataType="vm:MainViewModel"
+Title="MetaRestoreGeek"
+Width="720" Height="720" MinWidth="560" MinHeight="580"
+WindowStartupLocation="CenterScreen"
+Background="{StaticResource Navy}"
+FontFamily="{StaticResource UiFont}"
+FontSize="13.5"
+DragDrop.AllowDrop="True">
 
-  <Window.Styles>
-    <StyleInclude Source="avares://MetaRestoreGeek/Themes/Shell.axaml" />
-  </Window.Styles>
+<Window.Styles>
+<StyleInclude Source="avares://MetaRestoreGeek/Themes/Shell.axaml" />
+</Window.Styles>
 
-  <Grid RowDefinitions="Auto,*">
+<Grid RowDefinitions="Auto,*">
 
-    <Border Grid.Row="0" Padding="24,18" Background="{StaticResource Chrome}"
-            BorderBrush="{StaticResource Line}" BorderThickness="0,0,0,1">
-      <Grid ColumnDefinitions="Auto,*,Auto">
-        <Image Grid.Column="0" Source="avares://MetaRestoreGeek/Assets/metarestoregeek.png"
-               Width="34" Height="34" VerticalAlignment="Center" />
-        <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
-          <TextBlock Text="MetaRestoreGeek" FontSize="17" FontWeight="Bold" />
-          <TextBlock Text="Puts the dates and locations back into your Google Takeout photos" FontSize="11.5"
-                     Foreground="{StaticResource Txt3}" Margin="0,1,0,0" />
-        </StackPanel>
-        <Button Grid.Column="2" Classes="ghost" Content="About"
-                Command="{Binding ShowAboutCommand}" VerticalAlignment="Center" />
-      </Grid>
-    </Border>
+<Border Grid.Row="0" Padding="24,18" Background="{StaticResource Chrome}"
+BorderBrush="{StaticResource Line}" BorderThickness="0,0,0,1">
+<Grid ColumnDefinitions="Auto,*,Auto">
+<Image Grid.Column="0" Source="avares://MetaRestoreGeek/Assets/metarestoregeek.png"
+Width="34" Height="34" VerticalAlignment="Center" />
+<StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
+<TextBlock Text="MetaRestoreGeek" FontSize="17" FontWeight="Bold" />
+<TextBlock Text="Puts the dates and locations back into your Google Takeout photos" FontSize="11.5"
+Foreground="{StaticResource Txt3}" Margin="0,1,0,0" />
+</StackPanel>
+<Button Grid.Column="2" Classes="ghost" Content="About"
+Command="{Binding ShowAboutCommand}" VerticalAlignment="Center" />
+</Grid>
+</Border>
 
-    <ScrollViewer Grid.Row="1">
-      <StackPanel Margin="24" Spacing="16">
+<ScrollViewer Grid.Row="1">
+<StackPanel Margin="24" Spacing="16">
 
-        <!-- exiftool missing -->
-        <Border Classes="band" Background="#332A1A0A" BorderBrush="{StaticResource Amber}"
-                IsVisible="{Binding !ExifToolAvailable}">
-          <StackPanel Spacing="8">
-            <TextBlock Text="exiftool is not installed" FontWeight="SemiBold" Foreground="{StaticResource Amber}" />
-            <TextBlock Text="{Binding ExifToolMissingMessage}" TextWrapping="Wrap" Classes="sub" />
-          </StackPanel>
-        </Border>
+<!-- exiftool missing -->
+<Border Classes="band" Background="#332A1A0A" BorderBrush="{StaticResource Amber}"
+IsVisible="{Binding !ExifToolAvailable}">
+<StackPanel Spacing="10">
+<TextBlock Text="exiftool is not installed" FontWeight="SemiBold" Foreground="{StaticResource Amber}" />
+<TextBlock Text="{Binding ExifToolMissingMessage}" TextWrapping="Wrap" Classes="sub" />
+<Button Classes="primary" Content="{Binding ExifToolDownloadButtonText}"
+Command="{Binding DownloadExifToolCommand}"
+IsVisible="{Binding !IsDownloadingExifTool}"
+HorizontalAlignment="Left" />
+<ProgressBar Value="{Binding ExifToolDownloadProgress}" Minimum="0" Maximum="1"
+Height="6" IsVisible="{Binding IsDownloadingExifTool}" />
+<TextBlock Text="{Binding ExifToolDownloadStatus}" Classes="sub" TextWrapping="Wrap"
+IsVisible="{Binding ExifToolDownloadStatus.Length}" />
+</StackPanel>
+</Border>
 
-        <!-- drop zone, shown until a folder is loaded -->
-        <Border Classes="drop" IsVisible="{Binding !HasSource}" Height="150">
-          <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="10">
-            <TextBlock Text="Drop your Takeout &quot;Google Photos&quot; folder here" FontSize="15"
-                       HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
-            <TextBlock Text="or" Classes="sub" HorizontalAlignment="Center" />
-            <Button Classes="primary" Content="Choose a folder..."
-                    Command="{Binding PickFolderCommand}" HorizontalAlignment="Center" />
-          </StackPanel>
-        </Border>
+<!-- drop zone, shown until a folder is loaded -->
+<Border Classes="drop" IsVisible="{Binding !HasSource}" Height="150">
+<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="10">
+<TextBlock Text="Drop your Takeout &quot;Google Photos&quot; folder here" FontSize="15"
+HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
+<TextBlock Text="or" Classes="sub" HorizontalAlignment="Center" />
+<Button Classes="primary" Content="Choose a folder..."
+Command="{Binding PickFolderCommand}" HorizontalAlignment="Center" />
+</StackPanel>
+</Border>
 
-        <!-- loaded folder -->
-        <Border Classes="card" IsVisible="{Binding HasSource}">
-          <Grid ColumnDefinitions="*,Auto" Margin="16">
-            <StackPanel Grid.Column="0">
-              <TextBlock Text="{Binding SourceFolderName}" FontWeight="SemiBold" />
-              <TextBlock Text="{Binding PreviewSummary}" Classes="sub" Margin="0,3,0,0" TextWrapping="Wrap" />
-            </StackPanel>
-            <Button Grid.Column="1" Classes="ghost" Content="Choose a different folder"
-                    Command="{Binding PickFolderCommand}" VerticalAlignment="Center" />
-          </Grid>
-        </Border>
+<!-- loaded folder -->
+<Border Classes="card" IsVisible="{Binding HasSource}">
+<Grid ColumnDefinitions="*,Auto" Margin="16">
+<StackPanel Grid.Column="0">
+<TextBlock Text="{Binding SourceFolderName}" FontWeight="SemiBold" />
+<TextBlock Text="{Binding PreviewSummary}" Classes="sub" Margin="0,3,0,0" TextWrapping="Wrap" />
+</StackPanel>
+<Button Grid.Column="1" Classes="ghost" Content="Choose a different folder"
+Command="{Binding PickFolderCommand}" VerticalAlignment="Center" />
+</Grid>
+</Border>
 
-        <!-- go -->
-        <StackPanel Spacing="10" IsVisible="{Binding HasSource}">
-          <Button Classes="primary" Content="Restore the metadata" HorizontalAlignment="Stretch"
-                  HorizontalContentAlignment="Center"
-                  Command="{Binding StartCommand}" />
-          <ProgressBar Value="{Binding ProgressFraction}" Minimum="0" Maximum="1"
-                        Height="6" IsVisible="{Binding IsBusy}" />
-          <TextBlock Text="{Binding StatusText}" Classes="sub"
-                      IsVisible="{Binding StatusText.Length}" TextWrapping="Wrap" />
-        </StackPanel>
+<!-- go -->
+<StackPanel Spacing="10" IsVisible="{Binding HasSource}">
+<Button Classes="primary" Content="Restore the metadata" HorizontalAlignment="Stretch"
+HorizontalContentAlignment="Center"
+Command="{Binding StartCommand}" />
+<ProgressBar Value="{Binding ProgressFraction}" Minimum="0" Maximum="1"
+Height="6" IsVisible="{Binding IsBusy}" />
+<TextBlock Text="{Binding StatusText}" Classes="sub"
+IsVisible="{Binding StatusText.Length}" TextWrapping="Wrap" />
+</StackPanel>
 
-        <!-- result -->
-        <Border Classes="card" IsVisible="{Binding HasResult}">
-          <Grid ColumnDefinitions="*,Auto" Margin="16">
-            <StackPanel Grid.Column="0">
-              <TextBlock Text="Done" FontWeight="SemiBold" Foreground="{StaticResource GreenLight}" />
-              <TextBlock Text="{Binding StatusText}" Classes="sub" Margin="0,3,0,0" TextWrapping="Wrap" />
-            </StackPanel>
-            <Button Grid.Column="1" Classes="toolbtn" Content="Show in folder"
-                    Click="OnRevealResult" VerticalAlignment="Center" />
-          </Grid>
-        </Border>
+<!-- result -->
+<Border Classes="card" IsVisible="{Binding HasResult}">
+<Grid ColumnDefinitions="*,Auto" Margin="16">
+<StackPanel Grid.Column="0">
+<TextBlock Text="Done" FontWeight="SemiBold" Foreground="{StaticResource GreenLight}" />
+<TextBlock Text="{Binding StatusText}" Classes="sub" Margin="0,3,0,0" TextWrapping="Wrap" />
+</StackPanel>
+<Button Grid.Column="1" Classes="toolbtn" Content="Show in folder"
+Click="OnRevealResult" VerticalAlignment="Center" />
+</Grid>
+</Border>
 
-      </StackPanel>
-    </ScrollViewer>
-  </Grid>
+</StackPanel>
+</ScrollViewer>
+</Grid>
 </Window>

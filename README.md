@@ -60,10 +60,7 @@ happens, and how to check the download is genuine.](https://techygeekshome.info/
 ## Requirements
 
 - Windows 10 or 11, 64-bit.
-- **exiftool**, installed separately. MetaRestoreGeek does not bundle it and will not silently
-  download and run a copy on your behalf; the app tells you where to get it
-  ([exiftool.org](https://exiftool.org/)) the first time it can't find one. Put `exiftool.exe`
-  somewhere on your PATH and restart MetaRestoreGeek.
+- **exiftool**, fetched with one click the first time you need it. MetaRestoreGeek does not bundle it (it ships its own tag definitions and updates constantly, so bundling a stale copy would go wrong fast), but the first time it can't find a copy, it offers a one-click, in-app download of a pinned, hash-verified exiftool build from [oliverbetz.de](https://oliverbetz.de/cms/files/Artikel/ExifTool-for-Windows/), the same Windows package exiftool.org's own site points to, checked against a known checksum before anything runs. Already have exiftool on your PATH instead? It's picked up automatically and nothing is downloaded.
 
 ## Why this exists
 

@@ -1,0 +1,19 @@
+<Project>
+<PropertyGroup>
+<LangVersion>12.0</LangVersion>
+<Nullable>enable</Nullable>
+<ImplicitUsings>enable</ImplicitUsings>
+<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+<EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+<InvariantGlobalization>false</InvariantGlobalization>
+<Company>TechyGeeksHome</Company>
+<Authors>TechyGeeksHome</Authors>
+<Copyright>Copyright (c) 2026 TechyGeeksHome</Copyright>
+<!-- Bump this and the git tag together. MetaRestoreGeek had no Directory.Build.props at all,
+so its installer read AppVersion straight off the built exe and silently stayed 1.0.0.0
+no matter what tag was pushed - the exact bug documented in
+claude/appgeek-release-versioning-fix-aug-2026.md. Same manual discipline CutGeek,
+VideoSizeGeek and the rest of the range already run on. -->
+<Version>1.0.1</Version>
+</PropertyGroup>
+</Project>

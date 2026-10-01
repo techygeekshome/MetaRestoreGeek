@@ -40,7 +40,7 @@ VersionInfoCompany={#AppPublisher}
 VersionInfoDescription={#AppName} Setup
 
 WizardStyle=modern
-UninstallDisplayName={#AppName} {#AppVersion}
+UninstallDisplayName={#AppName}
 UninstallDisplayIcon={app}\{#AppExeName}
 LicenseFile=..\LICENSE
 SetupIconFile=..\icons\metarestoregeek.ico
@@ -67,16 +67,10 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 MinVersion=10.0
 
-[Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-
-[CustomMessages]
-english.CreateDesktopShortcut=Create a &desktop shortcut
-english.LaunchApp=Open {#AppName}
-english.WebSite={#AppName} on the web
+#include "MetaRestoreGeek_languages.iss"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopShortcut}"; GroupDescription: "Shortcuts:"
+Name: "desktopicon"; Description: "{cm:CreateDesktopShortcut}"; GroupDescription: "{cm:Shortcuts}"
 
 [Files]
 Source: "{#AppSourceDir}\{#AppExeName}"; DestDir: "{app}"; Flags: ignoreversion

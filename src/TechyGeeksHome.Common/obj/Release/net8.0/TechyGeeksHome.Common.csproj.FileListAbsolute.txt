@@ -1,0 +1,12 @@
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/bin/Release/net8.0/TechyGeeksHome.Common.deps.json
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/bin/Release/net8.0/TechyGeeksHome.Common.dll
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/TechyGeeksHome.Common.csproj.AssemblyReference.cache
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/Avalonia/Resources.Inputs.cache
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/Avalonia/resources
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/TechyGeeksHome.Common.GeneratedMSBuildEditorConfig.editorconfig
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/TechyGeeksHome.Common.AssemblyInfoInputs.cache
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/TechyGeeksHome.Common.AssemblyInfo.cs
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/TechyGeeksHome.Common.csproj.CoreCompileInputs.cache
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/Avalonia/TechyGeeksHome.Common.dll
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/refint/Avalonia/TechyGeeksHome.Common.dll
+/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/obj/Release/net8.0/ref/TechyGeeksHome.Common.dll

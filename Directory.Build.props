@@ -14,6 +14,6 @@ so its installer read AppVersion straight off the built exe and silently stayed 
 no matter what tag was pushed - the exact bug documented in
 claude/appgeek-release-versioning-fix-aug-2026.md. Same manual discipline CutGeek,
 VideoSizeGeek and the rest of the range already run on. -->
-<Version>1.0.1</Version>
+<Version>1.0.2</Version>
 </PropertyGroup>
 </Project>

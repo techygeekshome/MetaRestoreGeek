@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "mNt4j38JxOc=",
+  "success": true,
+  "projectFilePath": "/home/claude/x/MetaRestoreGeek/src/TechyGeeksHome.Common/TechyGeeksHome.Common.csproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/avalonia/11.2.3/avalonia.11.2.3.nupkg.sha512",
+    "/root/.nuget/packages/avalonia.buildservices/0.0.29/avalonia.buildservices.0.0.29.nupkg.sha512",
+    "/root/.nuget/packages/avalonia.remote.protocol/11.2.3/avalonia.remote.protocol.11.2.3.nupkg.sha512",
+    "/root/.nuget/packages/microcom.runtime/0.11.0/microcom.runtime.0.11.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -130,6 +130,9 @@ private set { SetField(ref _outputFolder, value); OnPropertyChanged(nameof(HasRe
 }
 public bool HasResult => OutputFolder is not null;
 
+private string _resultMessage = "";
+public string ResultMessage { get => _resultMessage; private set => SetField(ref _resultMessage, value); }
+
 private bool CanStart => HasSource && PhotoCount > 0 && !IsBusy && ExifToolAvailable;
 
 public System.Windows.Input.ICommand PickFolderCommand { get; }
@@ -180,6 +183,9 @@ try
 var outputPath = NextFreeOutputFolder(SourceFolder);
 var progress = new Progress<RestoreProgress>(p =>
 {
+// Progress<T> posts its callbacks, so the last few can land after the restore has
+// returned. Ignore them then, or "Finishing up..." overwrites the real summary.
+if (!IsBusy) return;
 ProgressFraction = p.Total == 0 ? 0 : (double)p.Done / p.Total;
 StatusText = p.Done < p.Total ? $"Restoring {p.CurrentFile}..." : "Finishing up...";
 });
@@ -188,10 +194,11 @@ var results = await RestoreEngine.RestoreFolderAsync(_exifToolPath, SourceFolder
 
 var restored = results.Count(r => r.Success);
 var skipped = results.Count - restored;
-OutputFolder = outputPath;
-StatusText = skipped == 0
+ResultMessage = skipped == 0
 ? $"Restored {restored} of {results.Count} photos."
 : $"Restored {restored} of {results.Count} photos. {skipped} had no sidecar or failed; nothing was changed for those.";
+OutputFolder = outputPath;
+StatusText = "";
 }
 catch (Exception ex)
 {

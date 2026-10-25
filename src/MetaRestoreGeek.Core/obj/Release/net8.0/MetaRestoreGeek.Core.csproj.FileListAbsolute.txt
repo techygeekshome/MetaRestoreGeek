@@ -1,0 +1,12 @@
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/bin/Release/net8.0/MetaRestoreGeek.Core.deps.json
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/bin/Release/net8.0/MetaRestoreGeek.Core.dll
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/bin/Release/net8.0/MetaRestoreGeek.Core.pdb
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/MetaRestoreGeek.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/MetaRestoreGeek.Core.AssemblyInfoInputs.cache
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/MetaRestoreGeek.Core.AssemblyInfo.cs
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/MetaRestoreGeek.Core.csproj.CoreCompileInputs.cache
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/MetaRestoreGeek.Core.sourcelink.json
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/MetaRestoreGeek.Core.dll
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/refint/MetaRestoreGeek.Core.dll
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/MetaRestoreGeek.Core.pdb
+/home/claude/x/MetaRestoreGeek/src/MetaRestoreGeek.Core/obj/Release/net8.0/ref/MetaRestoreGeek.Core.dll
